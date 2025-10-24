@@ -1,0 +1,1394 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TDC Programming - Futuro da Programação</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #8A2BE2;
+            --primary-dark: #6A0DAD;
+            --primary-light: #9B4DE3;
+            --secondary: #00FFFF;
+            --dark: #0A0A0A;
+            --dark-light: #1A1A1A;
+            --text: #FFFFFF;
+            --text-secondary: #CCCCCC;
+            --success: #00FF00;
+            --warning: #FFAA00;
+            --danger: #FF0055;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--dark);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Efeitos futuristas */
+        .glow {
+            text-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary), 0 0 30px var(--primary);
+        }
+
+        .neon-border {
+            border: 1px solid var(--primary);
+            box-shadow: 0 0 10px var(--primary), inset 0 0 10px rgba(138, 43, 226, 0.2);
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(138, 43, 226, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(138, 43, 226, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(138, 43, 226, 0); }
+        }
+
+        /* Header e Navegação */
+        header {
+            background: linear-gradient(to bottom, rgba(10, 10, 10, 0.9), transparent);
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .user-menu {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .user-avatar {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            cursor: pointer;
+            border: 2px solid var(--primary-light);
+        }
+
+        .user-avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--text);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(138, 43, 226, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(138, 43, 226, 0.1);
+            transform: translateY(-3px);
+        }
+
+        .btn-google {
+            background: white;
+            color: #333;
+            border: 1px solid #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-google:hover {
+            background: #f5f5f5;
+            transform: translateY(-3px);
+        }
+
+        /* Seção Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 2rem;
+            background: radial-gradient(circle at center, rgba(138, 43, 226, 0.1) 0%, rgba(10, 10, 10, 1) 70%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="%238A2BE2" fill-opacity="0.03" points="0,1000 1000,0 1000,1000"/></svg>');
+            background-size: cover;
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--text-secondary);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Modal de Autenticação */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: var(--dark-light);
+            padding: 2rem;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 450px;
+            position: relative;
+            border: 1px solid var(--primary);
+            box-shadow: 0 0 30px rgba(138, 43, 226, 0.5);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: var(--text);
+        }
+
+        .auth-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        .form-group input {
+            padding: 1rem;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: var(--dark);
+            color: var(--text);
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(138, 43, 226, 0.2);
+        }
+
+        .password-input {
+            position: relative;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+        }
+
+        .auth-tabs {
+            display: flex;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .auth-tab {
+            padding: 1rem 1.5rem;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+
+        .auth-tab.active {
+            border-bottom: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .auth-divider {
+            text-align: center;
+            margin: 1.5rem 0;
+            position: relative;
+            color: var(--text-secondary);
+        }
+
+        .auth-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .auth-divider span {
+            background: var(--dark-light);
+            padding: 0 1rem;
+            position: relative;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Modal de Perfil */
+        .profile-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile-content {
+            background: var(--dark-light);
+            padding: 2rem;
+            border-radius: 15px;
+            width: 100%;
+            max-width: 500px;
+            position: relative;
+            border: 1px solid var(--primary);
+        }
+
+        .profile-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .profile-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .profile-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .avatar-upload {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 0.3rem;
+            text-align: center;
+            font-size: 0.8rem;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .profile-avatar:hover .avatar-upload {
+            opacity: 1;
+        }
+
+        /* TDC Meet Modal */
+        .meet-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--dark);
+            z-index: 3000;
+        }
+
+        .meet-header {
+            background: var(--dark-light);
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .meet-controls {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .meet-control-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+
+        .meet-control-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .meet-control-btn.end-call {
+            background: var(--danger);
+        }
+
+        .meet-control-btn.end-call:hover {
+            background: #cc0044;
+        }
+
+        .meet-container {
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            height: calc(100vh - 80px);
+        }
+
+        .video-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            padding: 1rem;
+            background: var(--dark);
+        }
+
+        .video-participant {
+            background: var(--dark-light);
+            border-radius: 10px;
+            position: relative;
+            aspect-ratio: 16/9;
+            overflow: hidden;
+        }
+
+        .video-participant video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .participant-info {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .chat-container {
+            background: var(--dark-light);
+            border-left: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .chat-messages {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+        }
+
+        .chat-input {
+            padding: 1rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .chat-input input {
+            flex: 1;
+            padding: 0.8rem;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: var(--dark);
+            color: var(--text);
+        }
+
+        .fullscreen-btn {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: rgba(0, 0, 0, 0.5);
+            border: none;
+            color: white;
+            padding: 0.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .meet-container {
+                grid-template-columns: 1fr;
+            }
+
+            .chat-container {
+                height: 300px;
+            }
+        }
+
+        /* Animações */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .floating {
+            animation: float 5s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-code"></i> TDC <span>Programming</span>
+            </a>
+            <div class="nav-links">
+                <a href="#about">Sobre</a>
+                <a href="#features">Recursos</a>
+                <a href="#meet">TDC Meet</a>
+                <a href="#tutorial">Como Funciona</a>
+                <a href="https://github.com/Tdc-Programming?view_as=member" target="_blank">GitHub</a>
+            </div>
+            <div class="user-menu">
+                <div class="auth-buttons" id="auth-buttons">
+                    <button class="btn btn-secondary" id="login-btn">Entrar</button>
+                    <button class="btn btn-primary" id="register-btn">Cadastrar</button>
+                </div>
+                <div class="user-profile hidden" id="user-profile">
+                    <div class="user-avatar" id="user-avatar">
+                        <span id="avatar-text">U</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="glow">O Futuro da <span class="glow">Programação</span> é Aqui</h1>
+            <p>Aprenda a criar sites incríveis, domine as tecnologias mais demandadas e transforme seu conhecimento em oportunidades de negócio.</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary pulse" id="hero-register">Começar Agora</button>
+                <button class="btn btn-secondary" id="learn-more">Saiba Mais</button>
+                <button class="btn btn-primary hidden" id="meet-hero-btn">
+                    <i class="fas fa-video"></i> Iniciar TDC Meet
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal de Autenticação -->
+    <div class="modal" id="auth-modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-auth-modal">&times;</span>
+            <div class="auth-tabs">
+                <div class="auth-tab active" id="login-tab">Entrar</div>
+                <div class="auth-tab" id="register-tab">Cadastrar</div>
+            </div>
+            
+            <form class="auth-form" id="login-form">
+                <div class="form-group">
+                    <label for="login-email">E-mail</label>
+                    <input type="email" id="login-email" required placeholder="seu@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Senha</label>
+                    <div class="password-input">
+                        <input type="password" id="login-password" required placeholder="Sua senha">
+                        <button type="button" class="toggle-password" id="toggle-login-password">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Entrar</button>
+                
+                <div class="auth-divider">
+                    <span>ou</span>
+                </div>
+                
+                <button type="button" class="btn btn-google" id="google-login">
+                    <i class="fab fa-google"></i> Entrar com Google
+                </button>
+            </form>
+            
+            <form class="auth-form hidden" id="register-form">
+                <div class="form-group">
+                    <label for="register-name">Nome Completo</label>
+                    <input type="text" id="register-name" required placeholder="Seu nome completo">
+                </div>
+                <div class="form-group">
+                    <label for="register-email">E-mail</label>
+                    <input type="email" id="register-email" required placeholder="seu@email.com">
+                </div>
+                <div class="form-group">
+                    <label for="register-password">Senha</label>
+                    <div class="password-input">
+                        <input type="password" id="register-password" required placeholder="Mínimo 6 caracteres">
+                        <button type="button" class="toggle-password" id="toggle-register-password">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="register-confirm">Confirmar Senha</label>
+                    <div class="password-input">
+                        <input type="password" id="register-confirm" required placeholder="Digite novamente">
+                        <button type="button" class="toggle-password" id="toggle-register-confirm">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary">Cadastrar</button>
+                
+                <div class="auth-divider">
+                    <span>ou</span>
+                </div>
+                
+                <button type="button" class="btn btn-google" id="google-register">
+                    <i class="fab fa-google"></i> Cadastrar com Google
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Modal de Perfil -->
+    <div class="modal profile-modal" id="profile-modal">
+        <div class="profile-content">
+            <span class="close-modal" id="close-profile-modal">&times;</span>
+            <div class="profile-header">
+                <div class="profile-avatar" id="profile-avatar-large">
+                    <span id="profile-avatar-text">U</span>
+                    <div class="avatar-upload">
+                        Alterar
+                    </div>
+                    <input type="file" id="avatar-upload" accept="image/*" style="display: none;">
+                </div>
+                <div>
+                    <h2 id="profile-name">Usuário</h2>
+                    <p id="profile-email">usuario@email.com</p>
+                </div>
+            </div>
+            
+            <form class="auth-form" id="profile-form">
+                <div class="form-group">
+                    <label for="profile-display-name">Apelido/Nome de Exibição</label>
+                    <input type="text" id="profile-display-name" placeholder="Como quer ser chamado">
+                </div>
+                <div class="form-group">
+                    <label for="profile-email-input">E-mail</label>
+                    <input type="email" id="profile-email-input" disabled>
+                </div>
+                <button type="submit" class="btn btn-primary">Salvar Alterações</button>
+            </form>
+            
+            <div style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.1);">
+                <button class="btn btn-secondary" id="logout-btn" style="width: 100%;">
+                    <i class="fas fa-sign-out-alt"></i> Sair da Conta
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- TDC Meet Modal -->
+    <div class="meet-modal" id="meet-modal">
+        <div class="meet-header">
+            <div class="meet-info">
+                <h3>TDC Meet</h3>
+                <span id="meet-code">Código: TDCMEET-1234</span>
+            </div>
+            <div class="meet-controls">
+                <button class="meet-control-btn" id="toggle-mic" title="Microfone">
+                    <i class="fas fa-microphone"></i>
+                </button>
+                <button class="meet-control-btn" id="toggle-camera" title="Câmera">
+                    <i class="fas fa-video"></i>
+                </button>
+                <button class="meet-control-btn" id="share-screen" title="Compartilhar Tela">
+                    <i class="fas fa-desktop"></i>
+                </button>
+                <button class="meet-control-btn" id="record-call" title="Gravar Chamada">
+                    <i class="fas fa-record-vinyl"></i>
+                </button>
+                <button class="meet-control-btn end-call" id="end-call" title="Sair da Chamada">
+                    <i class="fas fa-phone-slash"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div class="meet-container">
+            <div class="video-container" id="video-container">
+                <!-- Vídeos dos participantes serão adicionados aqui -->
+                <div class="video-participant local-participant">
+                    <video id="local-video" autoplay muted></video>
+                    <div class="participant-info">
+                        <span id="local-participant-name">Você</span>
+                    </div>
+                    <button class="fullscreen-btn" onclick="toggleFullscreen('local-video')">
+                        <i class="fas fa-expand"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="chat-container">
+                <div class="chat-messages" id="chat-messages">
+                    <div class="system-message">
+                        Bem-vindo ao TDC Meet! A chamada foi iniciada.
+                    </div>
+                </div>
+                <div class="chat-input">
+                    <input type="text" id="chat-input" placeholder="Digite uma mensagem...">
+                    <button class="meet-control-btn" id="send-chat">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage-compat.js"></script>
+
+    <script>
+        // Configurações do Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyDBGLNWWZyNSml_YZ_aP5ecJloUPYV-r1M",
+            authDomain: "tdc-programming.firebaseapp.com",
+            projectId: "tdc-programming",
+            storageBucket: "tdc-programming.firebasestorage.app",
+            messagingSenderId: "783781234891",
+            appId: "1:783781234891:web:b03638dcd1a18a67e2334e",
+            measurementId: "G-ECVEPWCGF3"
+        };
+
+        // Inicializar Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+        const storage = firebase.storage();
+
+        // Estado da aplicação
+        let currentUser = null;
+        let userProfile = null;
+        let localStream = null;
+        let isMicOn = true;
+        let isCameraOn = true;
+        let isScreenSharing = false;
+
+        // Elementos DOM
+        const authModal = document.getElementById('auth-modal');
+        const profileModal = document.getElementById('profile-modal');
+        const meetModal = document.getElementById('meet-modal');
+        const closeAuthModal = document.getElementById('close-auth-modal');
+        const closeProfileModal = document.getElementById('close-profile-modal');
+        const loginBtn = document.getElementById('login-btn');
+        const registerBtn = document.getElementById('register-btn');
+        const heroRegisterBtn = document.getElementById('hero-register');
+        const loginTab = document.getElementById('login-tab');
+        const registerTab = document.getElementById('register-tab');
+        const loginForm = document.getElementById('login-form');
+        const registerForm = document.getElementById('register-form');
+        const profileForm = document.getElementById('profile-form');
+        const userAvatar = document.getElementById('user-avatar');
+        const userProfileElement = document.getElementById('user-profile');
+        const authButtons = document.getElementById('auth-buttons');
+        const meetHeroBtn = document.getElementById('meet-hero-btn');
+        const logoutBtn = document.getElementById('logout-btn');
+        const avatarUpload = document.getElementById('avatar-upload');
+        const profileAvatarLarge = document.getElementById('profile-avatar-large');
+
+        // Toggle de senha
+        document.getElementById('toggle-login-password').addEventListener('click', function() {
+            togglePassword('login-password', this);
+        });
+
+        document.getElementById('toggle-register-password').addEventListener('click', function() {
+            togglePassword('register-password', this);
+        });
+
+        document.getElementById('toggle-register-confirm').addEventListener('click', function() {
+            togglePassword('register-confirm', this);
+        });
+
+        function togglePassword(inputId, button) {
+            const input = document.getElementById(inputId);
+            const icon = button.querySelector('i');
+            
+            if (input.type === 'password') {
+                input.type = 'text';
+                icon.classList.remove('fa-eye');
+                icon.classList.add('fa-eye-slash');
+            } else {
+                input.type = 'password';
+                icon.classList.remove('fa-eye-slash');
+                icon.classList.add('fa-eye');
+            }
+        }
+
+        // Alternar entre login e registro
+        loginTab.addEventListener('click', () => {
+            loginTab.classList.add('active');
+            registerTab.classList.remove('active');
+            loginForm.classList.remove('hidden');
+            registerForm.classList.add('hidden');
+        });
+
+        registerTab.addEventListener('click', () => {
+            registerTab.classList.add('active');
+            loginTab.classList.remove('active');
+            registerForm.classList.remove('hidden');
+            loginForm.classList.add('hidden');
+        });
+
+        // Abrir modais
+        function openAuthModal() {
+            authModal.style.display = 'flex';
+        }
+
+        function openProfileModal() {
+            profileModal.style.display = 'flex';
+            loadProfileData();
+        }
+
+        function openMeetModal() {
+            meetModal.style.display = 'block';
+            initializeMeet();
+        }
+
+        // Fechar modais
+        closeAuthModal.addEventListener('click', () => {
+            authModal.style.display = 'none';
+        });
+
+        closeProfileModal.addEventListener('click', () => {
+            profileModal.style.display = 'none';
+        });
+
+        // Clique fora para fechar
+        window.addEventListener('click', (e) => {
+            if (e.target === authModal) authModal.style.display = 'none';
+            if (e.target === profileModal) profileModal.style.display = 'none';
+        });
+
+        // Event listeners para abrir modal de auth
+        loginBtn.addEventListener('click', () => {
+            openAuthModal();
+            loginTab.click();
+        });
+
+        registerBtn.addEventListener('click', () => {
+            openAuthModal();
+            registerTab.click();
+        });
+
+        heroRegisterBtn.addEventListener('click', () => {
+            openAuthModal();
+            registerTab.click();
+        });
+
+        // Login com email/senha
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+
+            auth.signInWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    authModal.style.display = 'none';
+                    showNotification('Login realizado com sucesso!', 'success');
+                })
+                .catch((error) => {
+                    showNotification('Erro no login: ' + error.message, 'error');
+                });
+        });
+
+        // Registro com email/senha
+        registerForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('register-name').value;
+            const email = document.getElementById('register-email').value;
+            const password = document.getElementById('register-password').value;
+            const confirmPassword = document.getElementById('register-confirm').value;
+
+            if (password !== confirmPassword) {
+                showNotification('As senhas não coincidem!', 'error');
+                return;
+            }
+
+            if (password.length < 6) {
+                showNotification('A senha deve ter pelo menos 6 caracteres!', 'error');
+                return;
+            }
+
+            auth.createUserWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    const user = userCredential.user;
+                    
+                    // Salvar informações adicionais no Firestore
+                    return db.collection('users').doc(user.uid).set({
+                        name: name,
+                        email: email,
+                        displayName: name.split(' ')[0],
+                        photoURL: '',
+                        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                        role: 'student'
+                    });
+                })
+                .then(() => {
+                    authModal.style.display = 'none';
+                    showNotification('Conta criada com sucesso!', 'success');
+                })
+                .catch((error) => {
+                    showNotification('Erro no cadastro: ' + error.message, 'error');
+                });
+        });
+
+        // Login com Google
+        document.getElementById('google-login').addEventListener('click', signInWithGoogle);
+        document.getElementById('google-register').addEventListener('click', signInWithGoogle);
+
+        function signInWithGoogle() {
+            const provider = new firebase.auth.GoogleAuthProvider();
+            
+            auth.signInWithPopup(provider)
+                .then((result) => {
+                    const user = result.user;
+                    
+                    // Verificar se é um novo usuário
+                    return db.collection('users').doc(user.uid).get()
+                        .then((doc) => {
+                            if (!doc.exists) {
+                                // Novo usuário - criar perfil
+                                return db.collection('users').doc(user.uid).set({
+                                    name: user.displayName,
+                                    email: user.email,
+                                    displayName: user.displayName,
+                                    photoURL: user.photoURL,
+                                    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                                    role: 'student'
+                                });
+                            }
+                        });
+                })
+                .then(() => {
+                    authModal.style.display = 'none';
+                    showNotification('Login com Google realizado!', 'success');
+                })
+                .catch((error) => {
+                    showNotification('Erro no login com Google: ' + error.message, 'error');
+                });
+        }
+
+        // Logout
+        logoutBtn.addEventListener('click', () => {
+            auth.signOut().then(() => {
+                profileModal.style.display = 'none';
+                showNotification('Logout realizado com sucesso!', 'success');
+            });
+        });
+
+        // Monitorar estado de autenticação
+        auth.onAuthStateChanged((user) => {
+            if (user) {
+                currentUser = user;
+                loadUserProfile(user.uid);
+            } else {
+                currentUser = null;
+                userProfile = null;
+                updateUI();
+            }
+        });
+
+        // Carregar perfil do usuário
+        function loadUserProfile(uid) {
+            db.collection('users').doc(uid).get()
+                .then((doc) => {
+                    if (doc.exists) {
+                        userProfile = doc.data();
+                        updateUI();
+                    }
+                })
+                .catch((error) => {
+                    console.error('Erro ao carregar perfil:', error);
+                });
+        }
+
+        // Carregar dados do perfil no modal
+        function loadProfileData() {
+            if (userProfile) {
+                document.getElementById('profile-name').textContent = userProfile.name;
+                document.getElementById('profile-email').textContent = userProfile.email;
+                document.getElementById('profile-display-name').value = userProfile.displayName || '';
+                document.getElementById('profile-email-input').value = userProfile.email;
+                
+                // Atualizar avatar
+                const avatarText = document.getElementById('profile-avatar-text');
+                const avatarElement = document.getElementById('profile-avatar-large');
+                
+                if (userProfile.photoURL) {
+                    avatarElement.innerHTML = `<img src="${userProfile.photoURL}" alt="Avatar">`;
+                } else {
+                    const initials = getUserInitials(userProfile.name);
+                    avatarText.textContent = initials;
+                }
+            }
+        }
+
+        // Salvar perfil
+        profileForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const displayName = document.getElementById('profile-display-name').value;
+            
+            if (currentUser) {
+                db.collection('users').doc(currentUser.uid).update({
+                    displayName: displayName,
+                    updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+                })
+                .then(() => {
+                    userProfile.displayName = displayName;
+                    updateUI();
+                    profileModal.style.display = 'none';
+                    showNotification('Perfil atualizado com sucesso!', 'success');
+                })
+                .catch((error) => {
+                    showNotification('Erro ao atualizar perfil: ' + error.message, 'error');
+                });
+            }
+        });
+
+        // Upload de avatar
+        profileAvatarLarge.addEventListener('click', () => {
+            avatarUpload.click();
+        });
+
+        avatarUpload.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file && currentUser) {
+                uploadAvatar(file, currentUser.uid);
+            }
+        });
+
+        function uploadAvatar(file, userId) {
+            const storageRef = storage.ref();
+            const avatarRef = storageRef.child(`avatars/${userId}`);
+            
+            avatarRef.put(file)
+                .then((snapshot) => {
+                    return snapshot.ref.getDownloadURL();
+                })
+                .then((downloadURL) => {
+                    return db.collection('users').doc(userId).update({
+                        photoURL: downloadURL,
+                        updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+                    });
+                })
+                .then(() => {
+                    userProfile.photoURL = downloadURL;
+                    updateUI();
+                    loadProfileData();
+                    showNotification('Avatar atualizado com sucesso!', 'success');
+                })
+                .catch((error) => {
+                    showNotification('Erro ao fazer upload do avatar: ' + error.message, 'error');
+                });
+        }
+
+        // Atualizar UI baseada no estado de autenticação
+        function updateUI() {
+            if (currentUser && userProfile) {
+                // Usuário logado
+                authButtons.classList.add('hidden');
+                userProfileElement.classList.remove('hidden');
+                meetHeroBtn.classList.remove('hidden');
+                
+                // Atualizar avatar
+                const avatarText = document.getElementById('avatar-text');
+                if (userProfile.photoURL) {
+                    userAvatar.innerHTML = `<img src="${userProfile.photoURL}" alt="Avatar">`;
+                } else {
+                    const initials = getUserInitials(userProfile.name);
+                    avatarText.textContent = initials;
+                }
+                
+                // Event listeners
+                userAvatar.onclick = openProfileModal;
+                meetHeroBtn.onclick = openMeetModal;
+                
+            } else {
+                // Usuário não logado
+                authButtons.classList.remove('hidden');
+                userProfileElement.classList.add('hidden');
+                meetHeroBtn.classList.add('hidden');
+            }
+        }
+
+        // Helper functions
+        function getUserInitials(name) {
+            return name.split(' ').map(n => n[0]).join('').toUpperCase().substring(0, 2);
+        }
+
+        function showNotification(message, type) {
+            // Criar notificação simples
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 1rem 1.5rem;
+                border-radius: 8px;
+                color: white;
+                z-index: 10000;
+                font-weight: 500;
+                background: ${type === 'success' ? '#27ae60' : '#e74c3c'};
+                border-left: 4px solid ${type === 'success' ? '#2ecc71' : '#c0392b'};
+            `;
+            notification.textContent = message;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.remove();
+            }, 5000);
+        }
+
+        // TDC Meet Functions
+        function initializeMeet() {
+            // Gerar código da reunião
+            const meetCode = 'TDCMEET-' + Math.random().toString(36).substr(2, 6).toUpperCase();
+            document.getElementById('meet-code').textContent = `Código: ${meetCode}`;
+            
+            // Atualizar nome do participante local
+            const displayName = userProfile?.displayName || userProfile?.name || 'Usuário';
+            document.getElementById('local-participant-name').textContent = displayName;
+            
+            // Inicializar mídia
+            initializeMedia();
+            
+            // Configurar controles
+            setupMeetControls();
+        }
+
+        async function initializeMedia() {
+            try {
+                localStream = await navigator.mediaDevices.getUserMedia({ 
+                    video: true, 
+                    audio: true 
+                });
+                
+                const localVideo = document.getElementById('local-video');
+                localVideo.srcObject = localStream;
+                
+            } catch (error) {
+                console.error('Erro ao acessar mídia:', error);
+                showNotification('Erro ao acessar câmera/microfone', 'error');
+            }
+        }
+
+        function setupMeetControls() {
+            // Toggle microfone
+            document.getElementById('toggle-mic').addEventListener('click', () => {
+                if (localStream) {
+                    const audioTracks = localStream.getAudioTracks();
+                    audioTracks.forEach(track => {
+                        track.enabled = !track.enabled;
+                    });
+                    isMicOn = !isMicOn;
+                    updateControlIcon('toggle-mic', 'fa-microphone', 'fa-microphone-slash', isMicOn);
+                }
+            });
+
+            // Toggle câmera
+            document.getElementById('toggle-camera').addEventListener('click', () => {
+                if (localStream) {
+                    const videoTracks = localStream.getVideoTracks();
+                    videoTracks.forEach(track => {
+                        track.enabled = !track.enabled;
+                    });
+                    isCameraOn = !isCameraOn;
+                    updateControlIcon('toggle-camera', 'fa-video', 'fa-video-slash', isCameraOn);
+                }
+            });
+
+            // Compartilhar tela
+            document.getElementById('share-screen').addEventListener('click', toggleScreenShare);
+
+            // Gravar chamada
+            document.getElementById('record-call').addEventListener('click', toggleRecording);
+
+            // Encerrar chamada
+            document.getElementById('end-call').addEventListener('click', endCall);
+
+            // Chat
+            document.getElementById('send-chat').addEventListener('click', sendChatMessage);
+            document.getElementById('chat-input').addEventListener('keypress', (e) => {
+                if (e.key === 'Enter') sendChatMessage();
+            });
+        }
+
+        function updateControlIcon(buttonId, onIcon, offIcon, isOn) {
+            const button = document.getElementById(buttonId);
+            const icon = button.querySelector('i');
+            icon.className = `fas ${isOn ? onIcon : offIcon}`;
+        }
+
+        async function toggleScreenShare() {
+            try {
+                if (!isScreenSharing) {
+                    const screenStream = await navigator.mediaDevices.getDisplayMedia({ 
+                        video: true,
+                        audio: true 
+                    });
+                    
+                    const localVideo = document.getElementById('local-video');
+                    localVideo.srcObject = screenStream;
+                    isScreenSharing = true;
+                    
+                    screenStream.getTracks().forEach(track => {
+                        track.onended = () => {
+                            localVideo.srcObject = localStream;
+                            isScreenSharing = false;
+                        };
+                    });
+                    
+                } else {
+                    const localVideo = document.getElementById('local-video');
+                    localVideo.srcObject = localStream;
+                    isScreenSharing = false;
+                }
+                
+            } catch (error) {
+                console.error('Erro ao compartilhar tela:', error);
+            }
+        }
+
+        function toggleRecording() {
+            showNotification('Funcionalidade de gravação em desenvolvimento', 'info');
+        }
+
+        function endCall() {
+            if (localStream) {
+                localStream.getTracks().forEach(track => track.stop());
+            }
+            meetModal.style.display = 'none';
+            showNotification('Chamada encerrada', 'info');
+        }
+
+        function sendChatMessage() {
+            const chatInput = document.getElementById('chat-input');
+            const message = chatInput.value.trim();
+            
+            if (message && userProfile) {
+                const chatMessages = document.getElementById('chat-messages');
+                const messageElement = document.createElement('div');
+                messageElement.className = 'chat-message';
+                messageElement.innerHTML = `
+                    <strong>${userProfile.displayName}:</strong> ${message}
+                `;
+                chatMessages.appendChild(messageElement);
+                chatInput.value = '';
+                chatMessages.scrollTop = chatMessages.scrollHeight;
+            }
+        }
+
+        function toggleFullscreen(videoId) {
+            const video = document.getElementById(videoId);
+            
+            if (!document.fullscreenElement) {
+                video.requestFullscreen().catch(err => {
+                    console.error(`Erro ao tentar entrar em fullscreen: ${err.message}`);
+                });
+            } else {
+                document.exitFullscreen();
+            }
+        }
+
+        // Inicialização
+        updateUI();
+    </script>
+</body>
+</html>
