@@ -1,0 +1,1051 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TDC Programming - Futuro da Programação</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #8A2BE2;
+            --primary-dark: #6A0DAD;
+            --primary-light: #9B4DE3;
+            --secondary: #00FFFF;
+            --dark: #0A0A0A;
+            --dark-light: #1A1A1A;
+            --text: #FFFFFF;
+            --text-secondary: #CCCCCC;
+            --success: #00FF00;
+            --warning: #FFAA00;
+            --danger: #FF0055;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--dark);
+            color: var(--text);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Efeitos futuristas */
+        .glow {
+            text-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary), 0 0 30px var(--primary);
+        }
+
+        .neon-border {
+            border: 1px solid var(--primary);
+            box-shadow: 0 0 10px var(--primary), inset 0 0 10px rgba(138, 43, 226, 0.2);
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(138, 43, 226, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(138, 43, 226, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(138, 43, 226, 0); }
+        }
+
+        /* Header e Navegação */
+        header {
+            background: linear-gradient(to bottom, rgba(10, 10, 10, 0.9), transparent);
+            padding: 1.5rem 0;
+            position: fixed;
+            width: 100%;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--text);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            padding: 0.7rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: none;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: var(--text);
+        }
+
+        .btn-primary:hover {
+            background: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(138, 43, 226, 0.3);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text);
+            border: 1px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(138, 43, 226, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* Seção Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 0 2rem;
+            background: radial-gradient(circle at center, rgba(138, 43, 226, 0.1) 0%, rgba(10, 10, 10, 1) 70%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><polygon fill="%238A2BE2" fill-opacity="0.03" points="0,1000 1000,0 1000,1000"/></svg>');
+            background-size: cover;
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--text-secondary);
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Seções gerais */
+        section {
+            padding: 5rem 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--primary);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Seção Sobre */
+        .about {
+            background: var(--dark-light);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .about-card {
+            background: var(--dark);
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s;
+            border: 1px solid rgba(138, 43, 226, 0.2);
+        }
+
+        .about-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            box-shadow: 0 10px 30px rgba(138, 43, 226, 0.2);
+        }
+
+        .about-card i {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .about-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Seção Recursos */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: var(--dark-light);
+            padding: 2rem;
+            border-radius: 10px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--primary);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(138, 43, 226, 0.2);
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .feature-card h3 i {
+            color: var(--primary);
+        }
+
+        /* Seção TDC Meet */
+        .meet-section {
+            background: var(--dark-light);
+            text-align: center;
+        }
+
+        .meet-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .meet-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .meet-feature {
+            background: var(--dark);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid rgba(138, 43, 226, 0.3);
+        }
+
+        .meet-feature i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        /* Seção Tutorial */
+        .tutorial {
+            background: var(--dark);
+        }
+
+        .steps {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .step {
+            display: flex;
+            margin-bottom: 3rem;
+            align-items: flex-start;
+            gap: 2rem;
+        }
+
+        .step-number {
+            background: var(--primary);
+            color: var(--text);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            flex-shrink: 0;
+        }
+
+        .step-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .step-content ul {
+            list-style-type: none;
+        }
+
+        .step-content li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.5rem;
+        }
+
+        .step-content li::before {
+            content: '▸';
+            color: var(--primary);
+            position: absolute;
+            left: 0;
+        }
+
+        /* Seção Call-to-Action */
+        .cta {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+
+        .cta h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-light);
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .credits {
+            margin-top: 2rem;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+        }
+
+        .credits a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        /* Modal de Autenticação */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+            backdrop-filter: blur(5px);
+        }
+
+        .modal-content {
+            background: var(--dark-light);
+            padding: 2rem;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 400px;
+            position: relative;
+            border: 1px solid var(--primary);
+            box-shadow: 0 0 30px rgba(138, 43, 226, 0.5);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1.5rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-secondary);
+        }
+
+        .close-modal:hover {
+            color: var(--text);
+        }
+
+        .auth-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-weight: 500;
+        }
+
+        .form-group input {
+            padding: 0.8rem;
+            border-radius: 5px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: var(--dark);
+            color: var(--text);
+        }
+
+        .auth-tabs {
+            display: flex;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .auth-tab {
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+            border-bottom: 2px solid transparent;
+        }
+
+        .auth-tab.active {
+            border-bottom: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .step {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        /* Animações */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .floating {
+            animation: float 5s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <i class="fas fa-code"></i> TDC <span>Programming</span>
+            </a>
+            <div class="nav-links">
+                <a href="#about">Sobre</a>
+                <a href="#features">Recursos</a>
+                <a href="#meet">TDC Meet</a>
+                <a href="#tutorial">Como Funciona</a>
+                <a href="https://github.com/Tdc-Programming?view_as=member" target="_blank">GitHub</a>
+            </div>
+            <div class="auth-buttons">
+                <button class="btn btn-secondary" id="login-btn">Entrar</button>
+                <button class="btn btn-primary" id="register-btn">Cadastrar</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="glow">O Futuro da <span class="glow">Programação</span> é Aqui</h1>
+            <p>Aprenda a criar sites incríveis, domine as tecnologias mais demandadas e transforme seu conhecimento em oportunidades de negócio.</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary pulse" id="hero-register">Começar Agora</button>
+                <button class="btn btn-secondary" id="learn-more">Saiba Mais</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sobre -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">Sobre a TDC Programming</h2>
+            <div class="about-grid">
+                <div class="about-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Educação de Qualidade</h3>
+                    <p>Ensino prático e direto para você dominar o desenvolvimento web do zero ao profissional.</p>
+                </div>
+                <div class="about-card">
+                    <i class="fas fa-briefcase"></i>
+                    <h3>Oportunidades Reais</h3>
+                    <p>Conectamos você com clientes e projetos para monetizar suas habilidades rapidamente.</p>
+                </div>
+                <div class="about-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Comunidade Ativa</h3>
+                    <p>Faça parte de uma comunidade de desenvolvedores que se ajudam e crescem juntos.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Recursos -->
+    <section id="features" class="features">
+        <div class="container">
+            <h2 class="section-title">Nossos Recursos</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <h3><i class="fas fa-video"></i> TDC Meet</h3>
+                    <p>Plataforma de videochamadas integrada com chat, compartilhamento de tela e gravação de calls.</p>
+                </div>
+                <div class="feature-card">
+                    <h3><i class="fas fa-fire"></i> Firebase Integration</h3>
+                    <p>Autenticação segura e banco de dados em tempo real para uma experiência completa.</p>
+                </div>
+                <div class="feature-card">
+                    <h3><i class="fab fa-github"></i> GitHub Pages</h3>
+                    <p>Hospedagem gratuita para seus projetos com deploy contínuo e domínio personalizável.</p>
+                </div>
+                <div class="feature-card">
+                    <h3><i class="fas fa-code"></i> Projetos Práticos</h3>
+                    <p>Aprenda criando projetos reais que podem ser usados em seu portfólio e oferecidos a clientes.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TDC Meet -->
+    <section id="meet" class="meet-section">
+        <div class="container">
+            <h2 class="section-title">TDC Meet</h2>
+            <div class="meet-container">
+                <p>Nossa plataforma de videochamadas com todas as funcionalidades que você precisa para reuniões, aulas e colaboração em tempo real.</p>
+                
+                <div class="meet-features">
+                    <div class="meet-feature">
+                        <i class="fas fa-microphone"></i>
+                        <h4>Áudio Crystal</h4>
+                        <p>Qualidade de áudio profissional</p>
+                    </div>
+                    <div class="meet-feature">
+                        <i class="fas fa-video"></i>
+                        <h4>Video HD</h4>
+                        <p>Transmissão em alta definição</p>
+                    </div>
+                    <div class="meet-feature">
+                        <i class="fas fa-desktop"></i>
+                        <h4>Compartilhamento</h4>
+                        <p>Compartilhe sua tela com um clique</p>
+                    </div>
+                    <div class="meet-feature">
+                        <i class="fas fa-record-vinyl"></i>
+                        <h4>Gravação</h4>
+                        <p>Grave suas reuniões facilmente</p>
+                    </div>
+                </div>
+                
+                <button class="btn btn-primary" id="meet-button" disabled>
+                    <i class="fas fa-video"></i> Acessar TDC Meet (Faça login primeiro)
+                </button>
+                <p class="meet-note">* É necessário criar uma conta para acessar o TDC Meet</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tutorial -->
+    <section id="tutorial" class="tutorial">
+        <div class="container">
+            <h2 class="section-title">Como Funciona</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Crie sua Conta</h3>
+                        <p>Registre-se gratuitamente em nossa plataforma para acessar todos os recursos:</p>
+                        <ul>
+                            <li>Preencha o formulário de cadastro</li>
+                            <li>Confirme seu e-mail</li>
+                            <li>Complete seu perfil</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Aprenda com Nossos Materiais</h3>
+                        <p>Acesse tutoriais completos sobre as tecnologias mais importantes:</p>
+                        <ul>
+                            <li><strong>Firebase Console:</strong> Configuração de autenticação e banco de dados</li>
+                            <li><strong>GitHub Repository:</strong> Criação e gerenciamento de repositórios</li>
+                            <li><strong>GitHub Pages:</strong> Deploy gratuito de sites estáticos</li>
+                            <li><strong>HTML/CSS/JS:</strong> Fundamentos e técnicas avançadas</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Participe da Comunidade</h3>
+                        <p>Junte-se ao nosso servidor no Discord para:</p>
+                        <ul>
+                            <li>Tirar dúvidas com instrutores e colegas</li>
+                            <li>Participar de calls no TDC Meet</li>
+                            <li>Colaborar em projetos</li>
+                            <li>Receber ofertas de trabalho</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3>Monetize suas Habilidades</h3>
+                        <p>Comece a ganhar dinheiro com desenvolvimento web:</p>
+                        <ul>
+                            <li>Crie sites para clientes locais</li>
+                            <li>Ofereça serviços de manutenção</li>
+                            <li>Participe de projetos freelancer</li>
+                            <li>Venda templates e componentes</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 3rem;">
+                <p>Precisa de ajuda com alguma etapa? Entre no nosso servidor do Discord!</p>
+                <button class="btn btn-secondary" onclick="window.open('https://discord.gg/tdc-programming', '_blank')">
+                    <i class="fab fa-discord"></i> Entrar no Discord
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta">
+        <div class="container">
+            <h2>Pronto para Transformar sua Carreira?</h2>
+            <p>Junte-se a centenas de desenvolvedores que já estão criando sites incríveis e gerando renda com suas habilidades de programação.</p>
+            <button class="btn btn-secondary" id="cta-register">Começar Agora Gratuitamente</button>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="logo">
+                <i class="fas fa-code"></i> TDC <span>Programming</span>
+            </div>
+            <div class="footer-links">
+                <a href="#about">Sobre</a>
+                <a href="#features">Recursos</a>
+                <a href="#meet">TDC Meet</a>
+                <a href="#tutorial">Como Funciona</a>
+                <a href="https://github.com/Tdc-Programming?view_as=member" target="_blank">GitHub</a>
+                <a href="https://discord.gg/tdc-programming" target="_blank">Discord</a>
+            </div>
+            <div class="credits">
+                <p>Site desenvolvido por <a href="#" target="_blank">Karty Willy</a> - Programador com a missão de criar uma empresa de desenvolvimento web com diversos alunos e vender sites internacionalmente para gerar lucro e oportunidades.</p>
+                <p>© 2023 TDC Programming. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal de Autenticação -->
+    <div class="modal" id="auth-modal">
+        <div class="modal-content">
+            <span class="close-modal" id="close-modal">&times;</span>
+            <div class="auth-tabs">
+                <div class="auth-tab active" id="login-tab">Entrar</div>
+                <div class="auth-tab" id="register-tab">Cadastrar</div>
+            </div>
+            
+            <form class="auth-form" id="login-form">
+                <div class="form-group">
+                    <label for="login-email">E-mail</label>
+                    <input type="email" id="login-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Senha</label>
+                    <input type="password" id="login-password" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Entrar</button>
+            </form>
+            
+            <form class="auth-form hidden" id="register-form">
+                <div class="form-group">
+                    <label for="register-name">Nome Completo</label>
+                    <input type="text" id="register-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-email">E-mail</label>
+                    <input type="email" id="register-email" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-password">Senha</label>
+                    <input type="password" id="register-password" required>
+                </div>
+                <div class="form-group">
+                    <label for="register-confirm">Confirmar Senha</label>
+                    <input type="password" id="register-confirm" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Cadastrar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+
+    <script>
+        // Suas configurações do Firebase
+        const firebaseConfig = {
+            apiKey: "AIzaSyDBGLNWWZyNSml_YZ_aP5ecJloUPYV-r1M",
+            authDomain: "tdc-programming.firebaseapp.com",
+            projectId: "tdc-programming",
+            storageBucket: "tdc-programming.firebasestorage.app",
+            messagingSenderId: "783781234891",
+            appId: "1:783781234891:web:b03638dcd1a18a67e2334e",
+            measurementId: "G-ECVEPWCGF3"
+        };
+
+        // Inicializar Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth();
+        const db = firebase.firestore();
+
+        // Elementos DOM
+        const authModal = document.getElementById('auth-modal');
+        const closeModal = document.getElementById('close-modal');
+        const loginBtn = document.getElementById('login-btn');
+        const registerBtn = document.getElementById('register-btn');
+        const heroRegisterBtn = document.getElementById('hero-register');
+        const ctaRegisterBtn = document.getElementById('cta-register');
+        const loginTab = document.getElementById('login-tab');
+        const registerTab = document.getElementById('register-tab');
+        const loginForm = document.getElementById('login-form');
+        const registerForm = document.getElementById('register-form');
+        const meetButton = document.getElementById('meet-button');
+
+        // Alternar entre login e registro
+        loginTab.addEventListener('click', () => {
+            loginTab.classList.add('active');
+            registerTab.classList.remove('active');
+            loginForm.classList.remove('hidden');
+            registerForm.classList.add('hidden');
+        });
+
+        registerTab.addEventListener('click', () => {
+            registerTab.classList.add('active');
+            loginTab.classList.remove('active');
+            registerForm.classList.remove('hidden');
+            loginForm.classList.add('hidden');
+        });
+
+        // Abrir modal
+        function openAuthModal() {
+            authModal.style.display = 'flex';
+        }
+
+        // Fechar modal
+        closeModal.addEventListener('click', () => {
+            authModal.style.display = 'none';
+        });
+
+        // Clique fora do modal para fechar
+        window.addEventListener('click', (e) => {
+            if (e.target === authModal) {
+                authModal.style.display = 'none';
+            }
+        });
+
+        // Event listeners para abrir modal
+        loginBtn.addEventListener('click', () => {
+            openAuthModal();
+            loginTab.click();
+        });
+
+        registerBtn.addEventListener('click', () => {
+            openAuthModal();
+            registerTab.click();
+        });
+
+        heroRegisterBtn.addEventListener('click', () => {
+            openAuthModal();
+            registerTab.click();
+        });
+
+        ctaRegisterBtn.addEventListener('click', () => {
+            openAuthModal();
+            registerTab.click();
+        });
+
+        // Login com Firebase
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+
+            auth.signInWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    // Login bem-sucedido
+                    authModal.style.display = 'none';
+                    alert('Login realizado com sucesso!');
+                    updateUI();
+                })
+                .catch((error) => {
+                    alert('Erro no login: ' + error.message);
+                });
+        });
+
+        // Registro com Firebase
+        registerForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const name = document.getElementById('register-name').value;
+            const email = document.getElementById('register-email').value;
+            const password = document.getElementById('register-password').value;
+            const confirmPassword = document.getElementById('register-confirm').value;
+
+            if (password !== confirmPassword) {
+                alert('As senhas não coincidem!');
+                return;
+            }
+
+            auth.createUserWithEmailAndPassword(email, password)
+                .then((userCredential) => {
+                    // Usuário criado com sucesso
+                    const user = userCredential.user;
+                    
+                    // Salvar informações adicionais no Firestore
+                    return db.collection('users').doc(user.uid).set({
+                        name: name,
+                        email: email,
+                        createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                        role: 'student'
+                    });
+                })
+                .then(() => {
+                    authModal.style.display = 'none';
+                    alert('Conta criada com sucesso!');
+                    updateUI();
+                })
+                .catch((error) => {
+                    alert('Erro no cadastro: ' + error.message);
+                });
+        });
+
+        // Monitorar estado de autenticação
+        auth.onAuthStateChanged((user) => {
+            if (user) {
+                // Usuário está logado
+                loginBtn.textContent = 'Minha Conta';
+                registerBtn.textContent = 'Sair';
+                meetButton.disabled = false;
+                meetButton.innerHTML = '<i class="fas fa-video"></i> Acessar TDC Meet';
+                
+                // Atualizar evento do botão de registro para logout
+                registerBtn.onclick = () => {
+                    auth.signOut();
+                };
+            } else {
+                // Usuário não está logado
+                loginBtn.textContent = 'Entrar';
+                registerBtn.textContent = 'Cadastrar';
+                meetButton.disabled = true;
+                meetButton.innerHTML = '<i class="fas fa-video"></i> Acessar TDC Meet (Faça login primeiro)';
+                
+                // Restaurar eventos originais
+                registerBtn.onclick = () => {
+                    openAuthModal();
+                    registerTab.click();
+                };
+            }
+        });
+
+        // Atualizar UI baseada no estado de autenticação
+        function updateUI() {
+            const user = auth.currentUser;
+            if (user) {
+                console.log('Usuário logado:', user.email);
+            } else {
+                console.log('Usuário não logado');
+            }
+        }
+
+        // Botão TDC Meet
+        meetButton.addEventListener('click', () => {
+            if (!auth.currentUser) {
+                openAuthModal();
+                return;
+            }
+            
+            // Aqui você implementaria a lógica para abrir o TDC Meet
+            alert('TDC Meet será aberto em uma nova janela! Em uma implementação real, isso abriria a plataforma de videochamadas.');
+            // window.open('tdc-meet.html', '_blank');
+        });
+
+        // Botão Saiba Mais
+        document.getElementById('learn-more').addEventListener('click', () => {
+            document.getElementById('about').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        // Inicializar
+        updateUI();
+    </script>
+</body>
+</html>
